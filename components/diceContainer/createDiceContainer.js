@@ -1,5 +1,5 @@
 function createDiceContainer() {
-    diceContainerInnerHTML = `
+    const diceContainerInnerHTML = `
         <div class="dice-container">
             <div class="dice-box">
             </div>

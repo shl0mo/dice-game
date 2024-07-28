@@ -1,5 +1,5 @@
 function createInitialScreen() {
-    initialScreenInnerHTML = `
+    const initialScreenInnerHTML = `
         <div class="initial-screen-container">
             <button onclick="goToGameSettings()">Play Game</button>
         </div>
