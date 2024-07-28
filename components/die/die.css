@@ -1,33 +1,17 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f0f0f0;
-  font-family: sans-serif;
-}
-
-.scene {
-  width: 200px;
-  height: 200px;
-  perspective: 1000px;
-}
-
-.cube {
+.die {
+  position: relative;
   width: 100%;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1s;
 }
-
+  
 .face {
   position: absolute;
   width: 200px;
   height: 200px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(240, 239, 239, 0.9);
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-size: 50px;
@@ -35,7 +19,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+  
 .front  { transform: rotateY(  0deg) translateZ(100px); }
 .back   { transform: rotateY(180deg) translateZ(100px); }
 .right  { transform: rotateY( 90deg) translateZ(100px); }
