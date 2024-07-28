@@ -12,4 +12,10 @@ function createDiceContainer() {
         'screen',
         diceContainerInnerHTML
     )
+
+    const gameSettings = JSON.parse(sessionStorage.gameSettings)
+    const numDice = gameSettings.numDice
+    for (let i = 1; i <= numDice; i++) {
+        createDie(`die-${i}`)
+    }
 }
