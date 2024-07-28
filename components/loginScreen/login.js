@@ -25,7 +25,7 @@ function login () {
     if (sessionStorage.numLoggedPlayers < numPlayers) {
         createNewLoginScreen()
     } else {
-
+        initPlaying()
     }
 }
 
