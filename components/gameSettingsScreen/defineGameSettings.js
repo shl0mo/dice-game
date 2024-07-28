@@ -18,4 +18,5 @@ function defineGameSettings () {
         'gameSettings',
         JSON.stringify(gameSettings)
     )
+    goToLoginScreen()
 }

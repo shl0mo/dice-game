@@ -1,5 +1,5 @@
 function createGameSettingsScreen() {
-    configScreenInnerHTML = `
+    const configScreenInnerHTML = `
         <div class="game-settings-container">
             <h1>Dice Game Configuration</h1>
             <form id="game-settings-form">

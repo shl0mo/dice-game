@@ -1,5 +1,5 @@
 function createDie (id) {
-    dieInnerHTML = `
+    const dieInnerHTML = `
         <div class="die" id="${id}">
             <div class="face front">1</div>
             <div class="face back">2</div>
