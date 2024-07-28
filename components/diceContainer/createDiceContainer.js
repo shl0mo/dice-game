@@ -8,8 +8,8 @@ function createDiceContainer() {
             </div>
         </div>
     `
-    addChildByParentTag(
-        'body',
+    addChildByParentClass(
+        'screen',
         diceContainerInnerHTML
     )
 }

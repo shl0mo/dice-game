@@ -5,13 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>3D Die with CSS and JavaScript</title>
+  <title>Dice Game</title>
 
   <link rel="stylesheet" href="./styles/style.css">
   <link rel="stylesheet" href="./components/die/die.css">
  
   <link rel="stylesheet" href="./components/diceContainer/diceContainer.css">
   <script src="./components/diceContainer/createDiceContainer.js"></script>
+
+  <script src="./components/initialScreen/createInitialScreen.js"></script>
+
+  <script src="./components/initialScreen/goToGameSettings.js"></script>
+
+  <link rel="stylesheet" href="./components/gameSettingsScreen/createGameSettingsScreen.css">
+  <script src="./components/gameSettingsScreen/createGameSettingsScreen.js"></script>
+  <script src="./components/gameSettingsScreen/defineGameSettings.js"></script>
+
+  <script src="./components/settings/loginOrNewUserScreen/addLoginOrSignupEvents.js"></script>
+  
 
   <script src="./components/die/createDie.js"></script>
   
@@ -21,8 +32,8 @@
   <script src="./utils/addChildByParentTag.js"></script>
 </head>
 
-<body onload="createDiceContainer(),createDie('ok'),createDie('ok2'),createDie('ok3')">
-
+<body onload="createInitialScreen()">
+  <div class="screen"></div>
   <script src="./scripts/script.js"></script>
 </body>
 </html>
