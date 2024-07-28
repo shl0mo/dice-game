@@ -1,0 +1,26 @@
+.game-settings-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-settings-container h1 {
+    margin-bottom: 20px;
+}
+
+.game-settings-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-settings-container label {
+    margin-bottom: 5px;
+}
+
+.game-settings-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
