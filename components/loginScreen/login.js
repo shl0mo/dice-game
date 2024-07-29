@@ -29,6 +29,7 @@ function loginPlayer (
 ) {
     const gameStatus = JSON.parse(sessionStorage.gameStatus)
     gameStatus.playerUsernames.push(playerUsername)
+    gameStatus.playerScores.push(0)
     sessionStorage.gameStatus = JSON.stringify(gameStatus)
 }
 
