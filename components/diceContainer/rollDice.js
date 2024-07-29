@@ -1,7 +1,6 @@
 function rollDice() {
     diceIds = getDiceIds()
 
-    const faceUpNumbers = []
     for (const dieId of diceIds) {
       const die = document.getElementById(dieId)
       const randomX = Math.floor(Math.random() * 4) * 90
@@ -9,13 +8,17 @@ function rollDice() {
       const randomZ = Math.floor(Math.random() * 4) * 90
   
       die.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`
-
-      setTimeout(() => {
+    }
+    setTimeout(() => {
+      for (const dieId of diceIds) {
+        const die = document.getElementById(dieId)
         const faceUpNumber = getFaceUpNumber(die)
         updatePlayerScores(faceUpNumber)
-        definePlayerTurn()
-      }, 1050)
-    }
+      }
+    }, 1050)
+    setTimeout(() => {
+      definePlayerTurn()
+    }, 1052)
 }
 
 
@@ -34,8 +37,6 @@ function definePlayerTurn () {
   const gameStatus = JSON.parse(sessionStorage.gameStatus)
   const numPlayers = gameStatus.playerUsernames.length
   const playerTurn = parseInt(gameStatus.playerTurn)
-  console.log(numPlayers)
-  console.log(playerTurn)
   if (gameStatus.playerTurn < numPlayers - 1) {
     gameStatus.playerTurn = playerTurn + 1
   } else {
@@ -52,7 +53,6 @@ function getDiceIds () {
       const dieId = die.id
       diceIds.push(dieId)
     }
-  
     return diceIds
 }
 
