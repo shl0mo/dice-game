@@ -10,23 +10,26 @@ function login () {
     const loginAuthorized = true
 
     if (loginAuthorized) {
-        const playersUsernames = JSON.parse(sessionStorage.playersUsernames)
-        playersUsernames.push(username)
-        sessionStorage.playersUsernames = JSON.stringify(playersUsernames)
+        loginPlayer(username)
     }
 
-    const gameSettings = JSON.parse(sessionStorage.gameSettings)
-    const numPlayers = gameSettings.numPlayers
-
-    const numLoggedPlayers = parseInt(sessionStorage.numLoggedPlayers)
-
-    sessionStorage.numLoggedPlayers = numLoggedPlayers + 1
+    const numPlayersSetting = getNumPlayersSetting()
+    const numLoggedPlayers = getNumLoggedPlayers()
     
-    if (sessionStorage.numLoggedPlayers < numPlayers) {
+    if (numLoggedPlayers < numPlayersSetting) {
         createNewLoginScreen()
     } else {
         initPlaying()
     }
+}
+
+
+function loginPlayer (
+    playerUsername
+) {
+    const gameStatus = JSON.parse(sessionStorage.gameStatus)
+    gameStatus.playerUsernames.push(playerUsername)
+    sessionStorage.gameStatus = JSON.stringify(gameStatus)
 }
 
 
