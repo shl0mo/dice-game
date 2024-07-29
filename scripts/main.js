@@ -8,10 +8,16 @@ sessionStorage.gameSettings = JSON.stringify({
 sessionStorage.gameStatus = JSON.stringify({
   playerUsernames: [],
   playerPoints: [],
-  diceThrows: 0
+  diceThrows: 0,
+  playerTurn: ''
 })
 
 
 function addEventListeners() {
   document.getElementById('ok').addEventListener('click', rollDie)
+}
+
+
+function game () {
+  
 }
