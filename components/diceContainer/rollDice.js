@@ -32,9 +32,11 @@ function updatePlayerScores (playScore) {
 
 function definePlayerTurn () {
   const gameStatus = JSON.parse(sessionStorage.gameStatus)
-  const numPlayers = gameStatus.playerUsernames.lenght
+  const numPlayers = gameStatus.playerUsernames.length
+  const playerTurn = parseInt(gameStatus.playerTurn)
+  console.log(numPlayers)
+  console.log(playerTurn)
   if (gameStatus.playerTurn < numPlayers - 1) {
-    const playerTurn = parseInt(gameStatus.playerTurn)
     gameStatus.playerTurn = playerTurn + 1
   } else {
     gameStatus.playerTurn = 0
