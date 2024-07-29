@@ -4,12 +4,11 @@ sessionStorage.gameSettings = JSON.stringify({
   numDice: 0
 })
 
-
 sessionStorage.gameStatus = JSON.stringify({
   playerUsernames: [],
-  playerPoints: [],
+  playerScores: [],
   diceThrows: 0,
-  playerTurn: ''
+  playerTurn: 0
 })
 
 
@@ -19,5 +18,5 @@ function addEventListeners() {
 
 
 function game () {
-  
+
 }
