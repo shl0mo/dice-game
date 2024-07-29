@@ -1,5 +1,5 @@
 function createLoginScreen () {
-    const numLoggedPlayers = parseInt(sessionStorage.numLoggedPlayers)
+    const numLoggedPlayers = getNumLoggedPlayers()
     const loginScreenInnerHTML = `
         <div class="login-container">
             <div class="avatar-section">
