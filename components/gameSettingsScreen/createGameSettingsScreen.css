@@ -1,8 +1,11 @@
 .game-settings-container {
-    background: #fff;
-    padding: 20px;
+    width: 30%;
+    padding: 30px 60px;
+    padding-bottom: 40px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    color: #fff;
 }
 
 .game-settings-container h1 {
@@ -12,10 +15,12 @@
 .game-settings-container form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .game-settings-container label {
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .game-settings-container input {
@@ -23,4 +28,23 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.game-settings-container select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.game-settings-container select:focus {
+    border-color: #007bff;
+}
+
+.game-settings-container select option {
+    background: #fff;
+    color: #000;
 }
