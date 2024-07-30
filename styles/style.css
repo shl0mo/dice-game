@@ -11,12 +11,15 @@ body {
   height: 100vh;
   width: 100%;
   margin: 0;
-  background-color: #f0f0f0;
   font-family: sans-serif;
+  background: rgb(20,26,29);
+  background: linear-gradient(225deg, rgba(20,26,29,1) 0%, rgba(39,59,60,1) 35%, rgba(58,84,84,1) 100%);
+  background: rgb(20,26,29);
+  background: linear-gradient(225deg, rgba(20,26,29,1) 0%, rgba(21,33,35,1) 35%, rgba(58,84,84,1) 100%);
 }
 
 button {
-  padding: 15px 30px;
+  padding: 20px 45px;
   background: linear-gradient(145deg, #ff6f61, #d946ef);
   color: #fff;
   font-size: 16px;
@@ -49,4 +52,17 @@ button::before {
 button:hover::before {
   width: 0;
   height: 0;
+}
+
+.screen {
+  background-image: url('../assets/img/game-background.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.standard-box-shadow {
+  box-shadow: 2px 5px 2px rgba(0, 0, 0, 0.3);
 }
