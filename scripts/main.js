@@ -15,12 +15,6 @@ sessionStorage.gameStatus = JSON.stringify({
 function rollDice() {
   diceIds = getDiceIds()
 
-  const currentPlayerIndex = getCurrentPlayerIndex()
-  const currentPlayerUsername = getPlayerUsername(
-    currentPlayerIndex
-  )
-  console.log(currentPlayerUsername)
-
   for (const dieId of diceIds) {
     const die = document.getElementById(dieId)
     const randomX = Math.floor(Math.random() * 4) * 90
@@ -40,8 +34,6 @@ function rollDice() {
     updateDiceThrows()
     updateCurrentPlayerIndex()
     endGameIfEndConditionIsReached()
-    const gameStatus = getGameStatus()
-    console.log(gameStatus)
   }, 1200)
 }
 
