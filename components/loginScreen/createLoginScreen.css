@@ -1,12 +1,5 @@
 .login-container {
-    display: flex;
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    min-width: 700px;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
+    width: 20%;
 }
 
 .login-container .avatar-section {
@@ -42,7 +35,6 @@
 .login-container .form-section {
     display: flex;
     flex-direction: column;
-    width: 70%;
 }
 
 .login-container input {
@@ -82,4 +74,10 @@
 
 .login-container .signup-button:hover {
     background: #45a049;
+}
+
+@media (max-width: 1620px) {
+    .login-container {
+        width: 300px;
+    }
 }

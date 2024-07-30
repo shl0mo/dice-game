@@ -1,7 +1,7 @@
 function createLoginScreen () {
     const numLoggedPlayers = getNumLoggedPlayers()
     const loginScreenInnerHTML = `
-        <div class="login-container">
+        <div class="login-container standard-form-container">
             <div class="avatar-section">
                 <div class="avatar">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="60px" height="60px">
@@ -12,10 +12,10 @@ function createLoginScreen () {
                 <p>Jogador ${numLoggedPlayers + 1}</p>
             </div>
             <div class="form-section">
-                <input type="text" id="username" placeholder="Usuário" required />
-                <input type="password" id="password" placeholder="Senha" required />
-                <button class="login-button" onclick="login()">Login</button>
-                <button class="signup-button">Create New User</button>
+                <input type="text" id="username" placeholder="Username" required />
+                <!--input type="password" id="password" placeholder="Senha" required /-->
+                <button class="login-button" onclick="login()">Definir Username</button>
+                <!--button class="signup-button">Novo Usuário</button-->
             </div>
         </div>
     `

@@ -1,8 +1,8 @@
 function login () {
     const username = document.querySelector('#username').value
-    const password = document.querySelector('#password').value
+    // const password = document.querySelector('#password').value
 
-    if (!username || !password) {
+    if (!username /* || !password*/) {
         alert('Todos os campos devem ser preenchidos')
         return
     }
