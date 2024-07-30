@@ -31,13 +31,14 @@ function rollDice() {
     }
   }, 1100)
   setTimeout(() => {
+    updateDiceThrows()
     definePlayerTurn()
   }, 1200)
 }
 
 
-function updatePlayerScores (playScore) {
-  const gameStatus = JSON.parse(sessionStorage.gameStatus)
+function updatePlayerScores(playScore) {
+  const gameStatus = getGameStatus()
   const playerTurn = parseInt(gameStatus.playerTurn)
   const playerScore = parseInt(gameStatus.playerScores[playerTurn])
   gameStatus.playerScores[playerTurn] = playerScore + playScore
@@ -47,8 +48,16 @@ function updatePlayerScores (playScore) {
 }
 
 
-function definePlayerTurn () {
-  const gameStatus = JSON.parse(sessionStorage.gameStatus)
+function updateDiceThrows() {
+  const gameStatus = getGameStatus()
+  const diceThrows = parseInt(gameStatus.diceThrows)
+  gameStatus.diceThrows = diceThrows + 1
+  sessionStorage.gameStatus = JSON.stringify(gameStatus)
+}
+
+
+function definePlayerTurn() {
+  const gameStatus = getGameStatus()
   const numPlayers = gameStatus.playerUsernames.length
   const playerTurn = parseInt(gameStatus.playerTurn)
   if (gameStatus.playerTurn < numPlayers - 1) {
@@ -60,7 +69,7 @@ function definePlayerTurn () {
 }
 
 
-function getDiceIds () {
+function getDiceIds() {
   const diceIds = []
   const dice = document.querySelectorAll('.die')
   for (const die of dice) {
@@ -71,7 +80,7 @@ function getDiceIds () {
 }
 
 
-function getFaceUpNumber (die) {
+function getFaceUpNumber(die) {
 const dieFaces = die.children
 for (let i = 0; i < dieFaces.length - 1; i++) {
   const faceInFront = dieFaces[i]
@@ -91,7 +100,7 @@ for (let i = 0; i < dieFaces.length - 1; i++) {
 }
 
 
-function getDistanceTop (face) {
+function getDistanceTop(face) {
   const rect = face.getBoundingClientRect()
   const scrollTop = window.scrollY || document.documentElement.scrollTop
   const distanceTop = rect.top + scrollTop
@@ -99,7 +108,7 @@ function getDistanceTop (face) {
 }
 
 
-function getDistanceLeft (face) {
+function getDistanceLeft(face) {
   const rect = face.getBoundingClientRect()
   const scrollLeft = window.scrollX || document.documentElement.scrollLeft
   const distanceLeft = rect.left + scrollLeft
@@ -107,7 +116,7 @@ function getDistanceLeft (face) {
 }
 
 
-function defineFaceUpNumber (face1, face2) {
+function defineFaceUpNumber(face1, face2) {
   const rect1 = face1.getBoundingClientRect();
   const rect2 = face2.getBoundingClientRect();
 
