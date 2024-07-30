@@ -1,6 +1,6 @@
 function createGameSettingsScreen() {
     const configScreenInnerHTML = `
-        <div class="game-settings-container">
+        <div class="game-settings-container standard-form-container">
             <h1>Confgurações da Partida</h1>
             <form id="game-settings-form">
                 <label for="num-players">Número de Jogadores:</label>
