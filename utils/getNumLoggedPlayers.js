@@ -1,5 +1,5 @@
 function getNumLoggedPlayers () {
-    const gameStatus = JSON.parse(sessionStorage.gameStatus)
+    const gameStatus = getGameStatus()
     const numLoggedPlayers = gameStatus.playerUsernames.length
     return numLoggedPlayers
 }

@@ -8,12 +8,18 @@ sessionStorage.gameStatus = JSON.stringify({
   playerUsernames: [],
   playerScores: [],
   diceThrows: 0,
-  playerTurn: 0
+  currentPlayerIndex: 0
 })
 
 
 function rollDice() {
   diceIds = getDiceIds()
+
+  const currentPlayerIndex = getCurrentPlayerIndex()
+  const currentPlayerUsername = getPlayerUsername(
+    currentPlayerIndex
+  )
+  console.log(currentPlayerUsername)
 
   for (const dieId of diceIds) {
     const die = document.getElementById(dieId)
@@ -32,16 +38,19 @@ function rollDice() {
   }, 1100)
   setTimeout(() => {
     updateDiceThrows()
-    definePlayerTurn()
+    updateCurrentPlayerIndex()
+    endGameIfEndConditionIsReached()
+    const gameStatus = getGameStatus()
+    console.log(gameStatus)
   }, 1200)
 }
 
 
 function updatePlayerScores(playScore) {
   const gameStatus = getGameStatus()
-  const playerTurn = parseInt(gameStatus.playerTurn)
-  const playerScore = parseInt(gameStatus.playerScores[playerTurn])
-  gameStatus.playerScores[playerTurn] = playerScore + playScore
+  const currentPlayerIndex = getCurrentPlayerIndex()
+  const playerScore = getPlayerScore(currentPlayerIndex)
+  gameStatus.playerScores[currentPlayerIndex] = playerScore + playScore
   sessionStorage.gameStatus = JSON.stringify(
     gameStatus
   )
@@ -56,17 +65,65 @@ function updateDiceThrows() {
 }
 
 
-function definePlayerTurn() {
+function updateCurrentPlayerIndex() {
   const gameStatus = getGameStatus()
-  const numPlayers = gameStatus.playerUsernames.length
-  const playerTurn = parseInt(gameStatus.playerTurn)
-  if (gameStatus.playerTurn < numPlayers - 1) {
-    gameStatus.playerTurn = playerTurn + 1
+  const numPlayers = getNumLoggedPlayers()
+  const currentPlayerIndex = getCurrentPlayerIndex()
+  if (currentPlayerIndex < numPlayers - 1) {
+    gameStatus.currentPlayerIndex = currentPlayerIndex + 1
   } else {
-    gameStatus.playerTurn = 0
+    gameStatus.currentPlayerIndex = 0
   }
   sessionStorage.gameStatus = JSON.stringify(gameStatus)
 }
+
+
+function endGameIfEndConditionIsReached() {
+  const numLoggedPlayers = getNumLoggedPlayers()
+  const numThrowsSetting = getNumThrowsSetting()
+  const diceThrowsStatus = getDiceThrowsStatus()
+  const maxThrows = numThrowsSetting * numLoggedPlayers
+  if (diceThrowsStatus === maxThrows) {
+    defineWinner()
+  }
+}
+
+
+function defineWinner() {
+  const playerUsernames = getPlayerUsernames()  
+  const maxScoreIndexes = getMaxPlayerScoreIndexes()
+  if (maxScoreIndexes.length === 1) {
+    const winnerIndex = maxScoreIndexes[0]
+    const winnerUsername = playerUsernames[winnerIndex]
+    const winnerMessage = `${winnerUsername} venceu a partida`
+    alert(winnerMessage)
+  } else {
+    const drawMessage = defineDrawMessage(
+      playerUsernames,
+      maxScoreIndexes
+    )
+    alert(drawMessage)
+  }
+}
+
+
+function defineDrawMessage(
+  playerUsernames,
+  maxScoreIndexes
+) {
+  let drawMessage = ''
+  for (let i = 0; i < maxScoreIndexes.length; i++) {
+    const tiedPlayerIndex = maxScoreIndexes[i]
+    const tiedPlayerUsername = playerUsernames[tiedPlayerIndex]
+    if (i !== maxScoreIndexes.length - 1) {
+      drawMessage += `${tiedPlayerUsername}, `
+    } else {
+      drawMessage += ` e ${tiedPlayerUsername}`
+    }
+  }
+  drawMessage += ' empataram'
+}
+
 
 
 function getDiceIds() {
