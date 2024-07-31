@@ -5,4 +5,5 @@ function initPlaying () {
     screen.classList.add('screen-dice-container-grid')
     createDiceContainer()
     createGameInfoContainer()
+    createPlayerTurnContainer()
 }
