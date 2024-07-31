@@ -4,4 +4,5 @@ function initPlaying () {
     loginScreen.remove()
     screen.classList.add('screen-dice-container-grid')
     createDiceContainer()
+    createGameInfoContainer()
 }
