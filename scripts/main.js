@@ -32,9 +32,11 @@ function rollDice() {
   }, 1100)
   setTimeout(() => {
     updateDiceThrows()
-    endGameIfEndConditionIsReached()
-    updateCurrentPlayerIndex()
-    updateDisplayedCurrentPlayerUsername()
+    const endGame = endGameIfEndConditionIsReached()
+    if (!endGame) {
+      updateCurrentPlayerIndex()
+      updateDisplayedCurrentPlayerUsername()
+    }
   }, 1200)
 }
 
@@ -85,7 +87,9 @@ function endGameIfEndConditionIsReached() {
   const maxThrows = numThrowsSetting * numLoggedPlayers
   if (diceThrowsStatus === maxThrows) {
     defineWinner()
+    return true
   }
+  return false
 }
 
 
