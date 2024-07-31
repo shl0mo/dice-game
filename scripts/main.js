@@ -32,8 +32,9 @@ function rollDice() {
   }, 1100)
   setTimeout(() => {
     updateDiceThrows()
-    updateCurrentPlayerIndex()
     endGameIfEndConditionIsReached()
+    updateCurrentPlayerIndex()
+    updateDisplayedCurrentPlayerUsername()
   }, 1200)
 }
 
@@ -67,6 +68,13 @@ function updateCurrentPlayerIndex() {
     gameStatus.currentPlayerIndex = 0
   }
   sessionStorage.gameStatus = JSON.stringify(gameStatus)
+}
+
+
+function updateDisplayedCurrentPlayerUsername() {
+  const currentPlayerUsername = getCurrentPlayerUsername()
+  const currentPlayerUsernameElement = document.querySelector('#current-player-username')
+  currentPlayerUsernameElement.innerText = currentPlayerUsername
 }
 
 
