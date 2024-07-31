@@ -13,8 +13,6 @@ body {
   margin: 0;
   font-family: sans-serif;
   background: rgb(20,26,29);
-  background: linear-gradient(225deg, rgba(20,26,29,1) 0%, rgba(39,59,60,1) 35%, rgba(58,84,84,1) 100%);
-  background: rgb(20,26,29);
   background: linear-gradient(225deg, rgba(20,26,29,1) 0%, rgba(21,33,35,1) 35%, rgba(58,84,84,1) 100%);
 }
 
@@ -64,6 +62,12 @@ button:hover::before {
   background-position: center;
   width: 100vw;
   height: 100vh;
+}
+
+.screen-dice-container-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background: none;
 }
 
 .standard-box-shadow {

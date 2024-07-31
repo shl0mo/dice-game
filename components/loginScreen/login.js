@@ -1,18 +1,13 @@
 function login () {
     const username = document.querySelector('#username').value
-    // const password = document.querySelector('#password').value
 
-    if (!username /* || !password*/) {
+    if (!username) {
         alert('Todos os campos devem ser preenchidos')
         return
     }
 
-    const loginAuthorized = true
-
-    if (loginAuthorized) {
-        loginPlayer(username)
-    }
-
+    loginPlayer(username)
+    
     const numPlayersSetting = getNumPlayersSetting()
     const numLoggedPlayers = getNumLoggedPlayers()
     
@@ -21,6 +16,16 @@ function login () {
     } else {
         initPlaying()
     }
+}
+
+function checkUsername(
+    username
+) {
+    const playerUsernames = getPlayerUsernames()
+    if (!playerUsernames.includes(username)) {
+        return true
+    }
+    return false
 }
 
 
