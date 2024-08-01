@@ -6,4 +6,5 @@ function initPlaying () {
     createDiceContainer()
     createGameInfoContainer()
     createPlayerTurnContainer()
+    createScoreRankingContainer()
 }
