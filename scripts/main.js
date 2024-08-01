@@ -101,13 +101,14 @@ function defineWinner() {
     const winnerIndex = maxScoreIndexes[0]
     const winnerUsername = playerUsernames[winnerIndex]
     const winnerMessage = `${winnerUsername} venceu a partida`
-    alert(winnerMessage)
+    createGameOverMessageBox(winnerMessage)
+    confettiAnimation()
   } else {
     const drawMessage = defineDrawMessage(
       playerUsernames,
       maxScoreIndexes
     )
-    alert(drawMessage)
+    createGameOverMessageBox(drawMessage)
   }
 }
 
@@ -127,6 +128,7 @@ function defineDrawMessage(
     }
   }
   drawMessage += ' empataram'
+  return drawMessage
 }
 
 
