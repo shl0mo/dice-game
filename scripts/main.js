@@ -30,12 +30,12 @@ function play() {
 
 
 function computerPlaysIfItsComputerTurn() {
-  removeRollDiceEventFromRollDiceButton()
   const numPlayersSetting = getNumPlayersSetting()
   const currentPlayerUsername = getCurrentPlayerUsername()
   const onlyOnePlayer = numPlayersSetting === 1
   const computerTurn = currentPlayerUsername === 'Computador'
   if (onlyOnePlayer && computerTurn) {
+    removeRollDiceEventFromRollDiceButton()
     rollDice()
     computeScoresAndUpdateInfo()
   }
