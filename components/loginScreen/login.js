@@ -14,8 +14,18 @@ function login () {
     if (numLoggedPlayers < numPlayersSetting) {
         createNewLoginScreen()
     } else {
+        if (numPlayersSetting === 1) {
+            addComputerAsPlayer()   
+        }
         initPlaying()
     }
+}
+
+function addComputerAsPlayer() {
+    const gameStatus = getGameStatus()
+    gameStatus.playerUsernames.push('Computador')
+    gameStatus.playerScores.push(0)
+    sessionStorage.gameStatus = JSON.stringify(gameStatus)
 }
 
 function checkUsername(
@@ -32,7 +42,7 @@ function checkUsername(
 function loginPlayer (
     playerUsername
 ) {
-    const gameStatus = JSON.parse(sessionStorage.gameStatus)
+    const gameStatus = getGameStatus()
     gameStatus.playerUsernames.push(playerUsername)
     gameStatus.playerScores.push(0)
     sessionStorage.gameStatus = JSON.stringify(gameStatus)
