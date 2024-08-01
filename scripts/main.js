@@ -1,15 +1,19 @@
-sessionStorage.gameSettings = JSON.stringify({
-  numPlayers: 0,
-  numThrows: 0,
-  numDice: 0
-})
+defineSessionStorageObjects()
 
-sessionStorage.gameStatus = JSON.stringify({
-  playerUsernames: [],
-  playerScores: [],
-  diceThrows: 0,
-  currentPlayerIndex: 0
-})
+function defineSessionStorageObjects() {
+  sessionStorage.gameSettings = JSON.stringify({
+    numPlayers: 0,
+    numThrows: 0,
+    numDice: 0
+  })
+  
+  sessionStorage.gameStatus = JSON.stringify({
+    playerUsernames: [],
+    playerScores: [],
+    diceThrows: 0,
+    currentPlayerIndex: 0
+  })
+}
 
 
 function play() {
