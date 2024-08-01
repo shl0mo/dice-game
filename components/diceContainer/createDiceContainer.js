@@ -4,7 +4,7 @@ function createDiceContainer() {
             <div class="dice-box">
             </div>
             <div id="roll-dice-button-container">
-                <button onclick="rollDice()" id="roll-dice-button">Roll Dice</button>
+                <button onclick="play()" id="roll-dice-button">Roll Dice</button>
             </div>
         </div>
     `

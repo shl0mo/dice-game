@@ -12,18 +12,32 @@ sessionStorage.gameStatus = JSON.stringify({
 })
 
 
-function rollDice() {
+function play() {
   removeRollDiceEventFromRollDiceButton()
 
-  diceIds = getDiceIds()
-  for (const dieId of diceIds) {
-    const die = document.getElementById(dieId)
-    const randomX = Math.floor(Math.random() * 4) * 90
-    const randomY = Math.floor(Math.random() * 4) * 90
-    const randomZ = Math.floor(Math.random() * 4) * 90
+  rollDice()
+  computeScoresAndUpdateInfo()
 
-    die.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`
+  setTimeout(() => {
+    computerPlaysIfItsComputerTurn()
+  }, 1400)
+}
+
+
+function computerPlaysIfItsComputerTurn() {
+  const numPlayersSetting = getNumPlayersSetting()
+  const currentPlayerUsername = getCurrentPlayerUsername()
+  const onlyOnePlayer = numPlayersSetting === 1
+  const computerTurn = currentPlayerUsername === 'Computador'
+  if (onlyOnePlayer && computerTurn) {
+    console.log('Computer Turn')
+    rollDice()
+    computeScoresAndUpdateInfo()
   }
+}
+
+
+function computeScoresAndUpdateInfo() {
   setTimeout(() => {
     for (const dieId of diceIds) {
       const die = document.getElementById(dieId)
@@ -46,10 +60,23 @@ function rollDice() {
 }
 
 
+function rollDice() {
+  diceIds = getDiceIds()
+  for (const dieId of diceIds) {
+    const die = document.getElementById(dieId)
+    const randomX = Math.floor(Math.random() * 4) * 90
+    const randomY = Math.floor(Math.random() * 4) * 90
+    const randomZ = Math.floor(Math.random() * 4) * 90
+
+    die.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`
+  }
+}
+
+
 function addRollDiceEventToRollDiceButton() {
   const rollDiceButton = document.querySelector('#roll-dice-button')
   rollDiceButton.remove()
-  const diceButtonInnerHTML = `<button onclick="rollDice()" id="roll-dice-button">Roll Dice</button>`
+  const diceButtonInnerHTML = `<button onclick="play()" id="roll-dice-button">Roll Dice</button>`
   addChildByParentId(
     'roll-dice-button-container',
     diceButtonInnerHTML
