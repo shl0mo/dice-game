@@ -1,3 +1,8 @@
+.die-container {
+  width: 100px;
+  height: 100px;
+}
+
 .die {
   position: relative;
   width: 100%;
