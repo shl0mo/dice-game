@@ -34,7 +34,6 @@ function computerPlaysIfItsComputerTurn() {
   const onlyOnePlayer = numPlayersSetting === 1
   const computerTurn = currentPlayerUsername === 'Computador'
   if (onlyOnePlayer && computerTurn) {
-    console.log('Computer Turn')
     rollDice()
     computeScoresAndUpdateInfo()
   }
