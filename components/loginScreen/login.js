@@ -42,6 +42,11 @@ function checkUsername(
 function loginPlayer (
     playerUsername
 ) {
+    const playerUsernames = getPlayerUsernames()
+    if (playerUsernames.includes(playerUsername)) {
+        alert('Usernames repetidos não são permitidos. Escolha outro')
+        return
+    }
     const gameStatus = getGameStatus()
     gameStatus.playerUsernames.push(playerUsername)
     gameStatus.playerScores.push(0)
