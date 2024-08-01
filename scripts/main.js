@@ -36,6 +36,7 @@ function rollDice() {
     if (!endGame) {
       updateCurrentPlayerIndex()
       updateDisplayedCurrentPlayerUsername()
+      createScoreRankingContainer()
     }
   }, 1200)
 }
