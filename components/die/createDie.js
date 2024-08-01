@@ -37,7 +37,7 @@ function defineInitialFaceNumbers() {
 
         const placedNumbers = []
         while (placedNumbers.length < 3) {
-            const number = Math.floor(Math.random() * 6) + 1
+            const number = Math.floor(Math.random() * 5) + 1
             if (!placedNumbers.includes(number))
                 placedNumbers.push(number)
         }
