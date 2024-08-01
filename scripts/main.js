@@ -204,10 +204,10 @@ function defineDrawMessage(
   for (let i = 0; i < maxScoreIndexes.length; i++) {
     const tiedPlayerIndex = maxScoreIndexes[i]
     const tiedPlayerUsername = playerUsernames[tiedPlayerIndex]
-    if (i !== maxScoreIndexes.length - 1) {
+    if (i <= maxScoreIndexes.length - 2) {
       drawMessage += `${tiedPlayerUsername}, `
     } else {
-      drawMessage += ` e ${tiedPlayerUsername}`
+      drawMessage += `e ${tiedPlayerUsername}`
     }
   }
   drawMessage += ' empataram'
