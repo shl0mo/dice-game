@@ -29,6 +29,7 @@ function play() {
 
 
 function computerPlaysIfItsComputerTurn() {
+  removeRollDiceEventFromRollDiceButton()
   const numPlayersSetting = getNumPlayersSetting()
   const currentPlayerUsername = getCurrentPlayerUsername()
   const onlyOnePlayer = numPlayersSetting === 1
