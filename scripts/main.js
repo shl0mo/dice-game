@@ -54,7 +54,8 @@ function defineRound() {
 
 function updateRoundDescription() {
   const gameStatus = getGameStatus()
-  gameStatus.currentRound = parseInt(gameStatus.diceThrows/2) + 1
+  const numLoggedPlayers = getNumLoggedPlayers()
+  gameStatus.currentRound = parseInt(gameStatus.diceThrows/numLoggedPlayers) + 1
   sessionStorage.gameStatus = JSON.stringify(gameStatus)
   defineRound()
 }
