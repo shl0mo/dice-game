@@ -11,6 +11,7 @@ function defineSessionStorageObjects() {
     playerUsernames: [],
     playerScores: [],
     diceThrows: 0,
+    currentRound: 1,
     currentPlayerIndex: 0
   })
 }
@@ -38,6 +39,24 @@ function computerPlaysIfItsComputerTurn() {
     rollDice()
     computeScoresAndUpdateInfo()
   }
+}
+
+
+function defineRound() {
+  const gameStatus = getGameStatus()
+  const currentRound = parseInt(gameStatus.currentRound)
+  const totalRounds = getNumThrowsSetting()
+  const roundDescriptionElement = document.querySelector('.round-description')
+  const roundDescriptionContent = `Rodada ${currentRound}/${totalRounds}`
+  roundDescriptionElement.innerText = roundDescriptionContent
+}
+
+
+function updateRoundDescription() {
+  const gameStatus = getGameStatus()
+  gameStatus.currentRound = parseInt(gameStatus.diceThrows/2) + 1
+  sessionStorage.gameStatus = JSON.stringify(gameStatus)
+  defineRound()
 }
 
 
@@ -130,6 +149,7 @@ function updateCurrentPlayerIndex() {
   if (currentPlayerIndex < numPlayers - 1) {
     gameStatus.currentPlayerIndex = currentPlayerIndex + 1
   } else {
+    updateRoundDescription()
     gameStatus.currentPlayerIndex = 0
   }
   sessionStorage.gameStatus = JSON.stringify(gameStatus)
