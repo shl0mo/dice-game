@@ -20,23 +20,33 @@ function createDie (id) {
 
 
 function defineInitialFaceNumbers() {
-    const front = document.querySelector('.front')
-    const back = document.querySelector('.back')
-    const right = document.querySelector('.right')
-    const left = document.querySelector('.left')
-    const top = document.querySelector('.top')
-    const bottom = document.querySelector('.bottom')
+    const fronts = document.querySelectorAll('.front')
+    const backs = document.querySelectorAll('.back')
+    const rights = document.querySelectorAll('.right')
+    const lefts = document.querySelectorAll('.left')
+    const tops = document.querySelectorAll('.top')
+    const bottoms = document.querySelectorAll('.bottom')
 
-    const placedNumbers = []
-    while (placedNumbers.length < 3) {
-        const number = Math.floor(Math.random() * 6) + 1
-        if (!placedNumbers.includes(number))
-            placedNumbers.push(number)
+    for (let i = 0; i < fronts.length; i++) {
+        const front = fronts[i]
+        const back = backs[i]
+        const right = rights[i]
+        const left = lefts[i]
+        const top = tops[i]
+        const bottom = bottoms[i]
+
+        const placedNumbers = []
+        while (placedNumbers.length < 3) {
+            const number = Math.floor(Math.random() * 6) + 1
+            if (!placedNumbers.includes(number))
+                placedNumbers.push(number)
+        }
+        
+        front.innerText = placedNumbers[0]
+        back.innerText = placedNumbers[0] + 1
+        right.innerText = placedNumbers[1]
+        left.innerText = placedNumbers[1] + 1
+        top.innerText = placedNumbers[2]
+        bottom.innerText = placedNumbers[2] + 1
     }
-    front.innerText = placedNumbers[0]
-    back.innerText = placedNumbers[0] + 1
-    right.innerText = placedNumbers[1]
-    left.innerText = placedNumbers[1] + 1
-    top.innerText = placedNumbers[2]
-    bottom.innerText = placedNumbers[2] + 1
 }
