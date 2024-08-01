@@ -3,8 +3,8 @@ function createDiceContainer() {
         <div class="dice-container">
             <div class="dice-box">
             </div>
-            <div>
-                <button onclick="rollDice()">Roll Dice</button>
+            <div id="roll-dice-button-container">
+                <button onclick="rollDice()" id="roll-dice-button">Roll Dice</button>
             </div>
         </div>
     `

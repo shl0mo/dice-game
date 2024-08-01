@@ -13,8 +13,9 @@ sessionStorage.gameStatus = JSON.stringify({
 
 
 function rollDice() {
-  diceIds = getDiceIds()
+  removeRollDiceEventFromRollDiceButton()
 
+  diceIds = getDiceIds()
   for (const dieId of diceIds) {
     const die = document.getElementById(dieId)
     const randomX = Math.floor(Math.random() * 4) * 90
@@ -32,13 +33,43 @@ function rollDice() {
   }, 1100)
   setTimeout(() => {
     updateDiceThrows()
+    createScoreRankingContainer()
     const endGame = endGameIfEndConditionIsReached()
     if (!endGame) {
       updateCurrentPlayerIndex()
       updateDisplayedCurrentPlayerUsername()
-      createScoreRankingContainer()
+      addRollDiceEventToRollDiceButton()
+    } else {
+      removeRollDiceButton()
     }
   }, 1200)
+}
+
+
+function addRollDiceEventToRollDiceButton() {
+  const rollDiceButton = document.querySelector('#roll-dice-button')
+  rollDiceButton.remove()
+  const diceButtonInnerHTML = `<button onclick="rollDice()" id="roll-dice-button">Roll Dice</button>`
+  addChildByParentId(
+    'roll-dice-button-container',
+    diceButtonInnerHTML
+  )
+}
+
+function removeRollDiceButton() {
+  const rollDiceButton = document.querySelector('#roll-dice-button')
+  rollDiceButton.style.visibility = 'hidden'
+}
+
+
+function removeRollDiceEventFromRollDiceButton() {
+  const rollDiceButton = document.querySelector('#roll-dice-button')
+  rollDiceButton.remove()
+  const diceButtonInnerHTML = `<button id="roll-dice-button">Roll Dice</button>`
+  addChildByParentId(
+    'roll-dice-button-container',
+    diceButtonInnerHTML
+  )
 }
 
 
