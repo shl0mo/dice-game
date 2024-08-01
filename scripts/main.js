@@ -35,6 +35,7 @@ function rollDice() {
     endGameIfEndConditionIsReached()
     updateCurrentPlayerIndex()
     updateDisplayedCurrentPlayerUsername()
+    createScoreRankingContainer()
   }, 1200)
 }
 
